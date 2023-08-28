@@ -50,7 +50,12 @@ void loop() {
   digitalWrite(PIN_LED, LOW);
   digitalWrite(PIN_BUTTON, BUTTON_INACTIVE_STATE);
 
-  // go to sleep for 1s to reduce power consumption
+  // go to sleep for 1s
+  #ifdef ACTIVE_SLEEP
+  // active sleep (not recommended but supports porting to other platforms)
+  delay(1000);
+  #else
+  // power down during sleep to reduce power consumption
   {
     // disable ADC
     ADCSRA = 0;
@@ -74,4 +79,5 @@ void loop() {
     // cancel sleep as a precaution
     sleep_disable();
   }
+  #endif
 }

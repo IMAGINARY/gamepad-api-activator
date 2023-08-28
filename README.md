@@ -8,7 +8,7 @@ This sketch offers a hardware based solution to the problem by attaching an addi
 
 Currently, only the Arduino Nano hardware has been tested in combination with the EG Starts Zero Delay USB encoder. The Arduino Nano is powered via the 5V/GND pins of the encoder board to ensure that both boards operate at the same/similar electrical potentials (powering the Arduino through either its 5V or VIN pin should work reliably). The signal pin of the Arduino (pin 13 by default) is connected to one of the many button input pins of the encoder board (choose one that is not used in your application).
 
-Exchanging the microcontroller for a different one may not work as easily since the sketch relies on the sleep capabilities of the ATmega328P micro controller.
+Exchanging the microcontroller for a different one may not work as easily since the sketch relies on the sleep capabilities of the ATmega328P micro controller (see also the [active sleep configuration](#configuration)).
 
 When using a different gamepad encoder, it may be necessary to convert the logic level of the micro controller to that of the encoder, e.g. using a voltage divider.
 
@@ -35,6 +35,7 @@ The sketch exposes several configurable variables:
 - `PIN_BUTTON` (default: `PIN_LED`): The pin that the external gamepad controller board is connected to.
 - `BUTTON_ACTIVE_DURATION` (default: 50): The duration of the signalling in milliseconds.
 - `INVERT` (default: undefined): When defined, use LOW as the active state and HIGH otherwise.
+- `ACTIVE_SLEEP` (default: undefined): When defined, do not utilize platform dependent power saving routines between signals. This facilitates porting to other platforms.
 
 These variables can be set during the build process via the PlatformIO command line, e.g.
 
