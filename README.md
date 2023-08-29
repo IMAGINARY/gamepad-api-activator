@@ -14,7 +14,7 @@ When using a different gamepad encoder, it may be necessary to convert the logic
 
 ## Build system
 
-This project use the [PlatformIO](https://platformio.org/) tool to configure, build and flash the binaries for the microcontroller:
+This project uses the [PlatformIO](https://platformio.org/) tool to configure, build and flash the binaries for the microcontroller:
 
 ```shell
 # Build the binary for the default environment
